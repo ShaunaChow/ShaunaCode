@@ -43,7 +43,7 @@ public class ShaunaCompileUtil {
     public static void main(String[] args) {
         String source = "public class Test1 {\n" +
                 "    \n" +
-                "    public void ok(){\n" +
+                "    public static void main(String[] args){\n" +
                 "        System.out.println(\"2321\");\n" +
                 "    }\n" +
                 "}";

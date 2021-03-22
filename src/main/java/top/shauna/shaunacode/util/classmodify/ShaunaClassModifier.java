@@ -36,7 +36,7 @@ public class ShaunaClassModifier implements ClassModifier {
                     classByte = ByteUtil.byteReplace(classByte, offset - u2, u2, newStrLen);
                     classByte = ByteUtil.byteReplace(classByte, offset, len, newStrBytes);
                     return classByte;
-                }
+                }else offset+=len;
             }else{
                 offset += CONSTANT_ITEM_LENGTH[tag];
             }
