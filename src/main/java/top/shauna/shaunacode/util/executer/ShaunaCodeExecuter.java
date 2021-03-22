@@ -13,7 +13,6 @@ import java.lang.reflect.Method;
 public class ShaunaCodeExecuter {
 
     public static String execute(byte[] classByte){
-        ShaunaSystem.clearBuffer();
         ShaunaCodeClassLoader classLoader = new ShaunaCodeClassLoader();
         Class clazz = classLoader.loadBytes(classByte);
         try {
@@ -22,6 +21,8 @@ public class ShaunaCodeExecuter {
         } catch (Exception e) {
             e.printStackTrace(ShaunaSystem.err);
         }
-        return ShaunaSystem.getBufferString();
+        String ret = ShaunaSystem.getBufferString();
+        ShaunaSystem.clearBuffer();
+        return ret;
     }
 }
