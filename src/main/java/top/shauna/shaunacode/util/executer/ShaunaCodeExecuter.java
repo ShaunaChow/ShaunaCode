@@ -1,8 +1,10 @@
 package top.shauna.shaunacode.util.executer;
 
 import top.shauna.shaunacode.util.classloader.ShaunaCodeClassLoader;
+import top.shauna.shaunacode.util.system.ShaunaInputStream;
 import top.shauna.shaunacode.util.system.ShaunaSystem;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -12,7 +14,8 @@ import java.lang.reflect.Method;
  */
 public class ShaunaCodeExecuter {
 
-    public static String execute(byte[] classByte){
+    public static String execute(byte[] classByte, byte[] input) throws IOException {
+        if (input!=null) ((ShaunaInputStream)ShaunaSystem.in).setDatas(input);
         ShaunaCodeClassLoader classLoader = new ShaunaCodeClassLoader();
         Class clazz = classLoader.loadBytes(classByte);
         try {

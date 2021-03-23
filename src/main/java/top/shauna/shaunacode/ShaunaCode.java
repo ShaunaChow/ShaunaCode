@@ -7,6 +7,7 @@ import top.shauna.shaunacode.util.executer.ShaunaCodeExecuter;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
+import java.io.IOException;
 
 /**
  * @Author Shauna.Chow
@@ -15,7 +16,11 @@ import javax.tools.JavaFileObject;
  */
 public class ShaunaCode {
 
-    public static String remoteExecute(String source){
+    public static String remoteExecute(String source) throws IOException {
+        return remoteExecute(source,null);
+    }
+
+    public static String remoteExecute(String source, String input) throws IOException {
         DiagnosticCollector<JavaFileObject> compileCollector = new DiagnosticCollector<>();
         byte[] compile = ShaunaCompileUtil.compile(source, compileCollector);
         if (compile==null){
@@ -31,6 +36,6 @@ public class ShaunaCode {
         }
         ShaunaClassModifier modifier = new ShaunaClassModifier(compile);
         byte[] modify = modifier.modify("java/lang/System", "top/shauna/shaunacode/util/system/ShaunaSystem");
-        return ShaunaCodeExecuter.execute(modify);
+        return ShaunaCodeExecuter.execute(modify,input==null?null:input.getBytes());
     }
 }

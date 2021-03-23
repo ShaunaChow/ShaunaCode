@@ -11,7 +11,7 @@ import java.util.Properties;
  * @E-Mail z1023778132@icloud.com
  */
 public class ShaunaSystem{
-    public static final InputStream in = System.in;
+    public static final InputStream in = new ShaunaInputStream();
     public static final PrintStream out = new ShaunaPrintStream();
     public static final PrintStream err = out;
 
@@ -20,6 +20,7 @@ public class ShaunaSystem{
     }
 
     public static void clearBuffer(){
+        ((ShaunaInputStream)in).close();
         out.close();
     }
 

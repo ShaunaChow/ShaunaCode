@@ -9,8 +9,8 @@ import java.util.Locale;
  * @E-Mail z1023778132@icloud.com
  */
 public class ShaunaPrintStream extends PrintStream {
-    private ThreadLocal<ByteArrayOutputStream> out = new ThreadLocal<>();
-    private ThreadLocal<Boolean> trouble = new ThreadLocal<>();
+    private static final ThreadLocal<ByteArrayOutputStream> out = new ThreadLocal<>();
+    private static final ThreadLocal<Boolean> trouble = new ThreadLocal<>();
 
     public ShaunaPrintStream() {
         super(new ByteArrayOutputStream());
