@@ -10,7 +10,7 @@ import java.io.InputStream;
  * @E-Mail z1023778132@icloud.com
  */
 public class ShaunaInputStream extends InputStream {
-    private static final ThreadLocal<InputStream> ins = new ThreadLocal<>();
+    private static final InheritableThreadLocal<InputStream> ins = new InheritableThreadLocal<>();
     @Override
     public int read() throws IOException {
         if (ins.get()==null) {

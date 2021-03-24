@@ -24,6 +24,15 @@ public class ShaunaSystem{
         out.close();
     }
 
+    public static void prepareAll(){
+        try {
+            ((ShaunaInputStream)in).setDatas(new byte[0]);
+            ((ShaunaPrintStream)out).setData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /** 添加所有的System的方法 **/
     public static void setIn(InputStream in) {
         System.setIn(in);

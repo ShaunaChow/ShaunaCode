@@ -9,11 +9,15 @@ import java.util.Locale;
  * @E-Mail z1023778132@icloud.com
  */
 public class ShaunaPrintStream extends PrintStream {
-    private static final ThreadLocal<ByteArrayOutputStream> out = new ThreadLocal<>();
-    private static final ThreadLocal<Boolean> trouble = new ThreadLocal<>();
+    private static final InheritableThreadLocal<ByteArrayOutputStream> out = new InheritableThreadLocal<>();
+    private static final InheritableThreadLocal<Boolean> trouble = new InheritableThreadLocal<>();
 
     public ShaunaPrintStream() {
         super(new ByteArrayOutputStream());
+    }
+
+    public void setData(){
+        ensureOpen();
     }
 
     @Override

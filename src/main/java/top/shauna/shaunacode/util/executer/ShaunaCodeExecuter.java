@@ -18,6 +18,7 @@ public class ShaunaCodeExecuter {
         if (input!=null) ((ShaunaInputStream)ShaunaSystem.in).setDatas(input);
         ShaunaCodeClassLoader classLoader = new ShaunaCodeClassLoader();
         Class clazz = classLoader.loadBytes(classByte);
+        ShaunaSystem.prepareAll();
         try {
             Method main = clazz.getMethod("main", String[].class);
             main.invoke(null, new String[]{null});

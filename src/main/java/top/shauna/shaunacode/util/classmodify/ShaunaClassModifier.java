@@ -11,7 +11,7 @@ public class ShaunaClassModifier implements ClassModifier {
     private byte[] classByte;
     private static final int CONSTANT_POOL_COUNT_INDEX = 8;
     private static final int CONSTANT_Utf8_info = 1;
-    private static final int[] CONSTANT_ITEM_LENGTH = {-1,-1,-1,5,5,9,9,3,3,5,5,5,5};
+    private static final int[] CONSTANT_ITEM_LENGTH = {-1,-1,-1,5,5,9,9,3,3,5,5,5,5,-1,-1,4,3,-1,5};
 
     private static final int u1 = 1;
     private static final int u2 = 2;

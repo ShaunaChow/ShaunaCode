@@ -35,16 +35,47 @@ public class Test1 {
 //            }).start();
 //        }
 
-        String source = "import java.util.Scanner;" +
-                "public class Main{\n" +
-                "    public static void main(String[] args) {\n" +
-                "        Scanner s = new Scanner(System.in);\n" +
-                "        //String s1 = s.nextLine();\n" +
-                "        System.out.println(1234);\n" +
-                "//s1 = s.nextLine();\n" +
-        "        //System.out.println(s1);\n" +
+        String source = "public class Main2{\n" +
+                "    public static void main(String[] args) throws InterruptedException {\n" +
+                "        new Thread(()->{\n" +
+                "            System.out.println(2);\n" +
+                "        }).start();\n" +
+                "        System.out.println(1);\n" +
+                "        Thread.sleep(10);\n" +
                 "    }\n" +
                 "}";
         System.out.println(">>"+ShaunaCode.remoteExecute(source));
+    }
+}
+
+class Main{
+    public static void main(String[] args) throws InterruptedException {
+        InheritableThreadLocal<String> local = new InheritableThreadLocal<>();
+        local.set("father");
+        new Thread(()->{
+            if (local.get()==null) {
+                local.set("son1");
+            }
+            System.out.println(local.get());
+        }).start();
+//        new Thread(()->{
+//            System.out.println(local.get());
+//        }).start();
+//        new Thread(()->{
+//            System.out.println(local.get());
+//        }).start();
+
+        Thread.sleep(1000);
+        System.out.println(local.get());
+    }
+}
+
+class Main2{
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(()->{
+            System.out.println(2);
+        }).start();
+        System.out.println(1);
+        Thread.sleep(10);
     }
 }
